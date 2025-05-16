@@ -20,7 +20,9 @@ Alterar/acrescentar novos elementos HTML nas estruturas dos trechos JSX dos comp
 Você deve acrescentar as funcionalidades necessárias para que o jogo funcione corretamente:
 
 * Apenas duas cartas podem ser viradas por rodada
-* Quando duas cartas iguais 
+* Quando aparecer duas cartas iguais, essas cartas devem ser fixadas e não podem ser viradas novamente
+* A cada tentativa, isto é, quando duas cartas são viradas, deve-se incrementar as tentativas
+* Quandos todas as cartas são viradas o jogo termina
 
 
 # Passo a passo da tarefa
