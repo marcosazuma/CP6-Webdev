@@ -1,27 +1,28 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
-import { animate } from 'animejs';
-import { useRef, useEffect, useState } from 'react';
-
-export default function Card({ id, imgid, isOpen, onClick }) {
-
+export default function Card({ id, img, isOpen, matched, onClick }) {
     function click() {
-        onClick({ id, imgid })
+      onClick({ id, img });
     }
-
+  
     return (
-        <>
-            <div className="relative m-1 w-26 h-26 cursor-pointer">
-                {
-                    isOpen ?
-                        <div onClick={click} className="top-0 border rounded bg-gray-300">
-                            <img src={`https://picsum.photos/id/${imgid}/200/200`} className="rounded w-26 h-26" alt="" />
-                        </div>
-                        :
-                        <div onClick={click} className="absolute flex items-center justify-center top-0 w-full h-full border rounded bg-gray-300">
-                            <Icon icon="game-icons:card-random" className="text-3xl text-gray-500" />
-                        </div>
-                }
-            </div>
-        </>
-    )
-}
+      <div
+        onClick={click}
+        className={`relative cursor-pointer rounded-lg shadow-md overflow-hidden select-none ${
+          isOpen ? "border-4 border-indigo-500" : "border border-gray-300"
+        } ${matched ? "ring-4 ring-green-400 ring-opacity-75" : ""}`}
+      >
+        {isOpen ? (
+          <img
+            src={img}
+            alt="Carta"
+            className="w-26 h-26 object-cover object-center rounded-lg"
+            draggable={false}
+          />
+        ) : (
+          <div className="flex items-center justify-center w-26 h-26 bg-indigo-100 rounded-lg text-indigo-400 text-4xl font-bold select-none">
+            ?
+          </div>
+        )}
+      </div>
+    );
+  }
+  
