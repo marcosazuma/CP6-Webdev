@@ -48,7 +48,7 @@ export default function CardAnim({ id, imgid, onClick }) {
         console.log("isFixed", isFixed);
         if (!isFixed) {
             onClick({ id, imgid })
-            isOpen ? close() : open()
+            //isOpen ? close() : open()
         }
     }
 

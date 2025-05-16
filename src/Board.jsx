@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Board() {
@@ -10,9 +10,16 @@ export default function Board() {
         for(let i=0; i< 16; i=i+2) {
             let imgid = parseInt(Math.random()*100)
             vetCards.push({ id: i, imgid, isOpen: true })
-            vetCards.push({ id: i+1, imgid, isOpen: false })
+            vetCards.push({ id: i+1, imgid, isOpen: true })
         }
         setCards(vetCards)
+        setTimeout(() => {
+            console.log("passou 5 segundos");            
+            for(let i in vetCards) {
+                vetCards[i].isOpen = false
+            }
+            setCards([...vetCards])
+        },5000)
     }
 
     useEffect(() => {
@@ -21,6 +28,8 @@ export default function Board() {
 
     function onClick(elem) {
         console.log("onClick",elem);
+        cards[elem.id].isOpen = !cards[elem.id].isOpen
+        setCards([...cards])
     }
 
     return (
